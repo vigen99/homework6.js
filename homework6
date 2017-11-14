@@ -1,0 +1,290 @@
+/*1  
+<script>
+const tool = function(x, y, main, z, a, b, c, d)
+{
+	if(x%2 == 0)
+		x=x+1;
+	main = x;
+	main1 = (x-1)/2
+	c = x-2;
+	const active = function(y, z)
+	{
+		if(z > main)
+			return "";
+		return y + active(z+1 , y);
+	};
+	const place = function(a)
+	{
+		if(a <= 0)
+				return "";
+			return "" + place(a - 1);
+	};
+	const create = function(x){
+		x = z;
+		a=(x-1)/2;
+		if(x <= 0)
+			return "";
+		console.log(place(a) + active(z , y));
+		create(x - 2)
+	};
+	const signs1 = function(y , d) {
+		if(d <= 0)
+			return;
+		return y + active1(d-1, y);
+	};
+	const place1 = function(b) {
+		if(x>= main)
+			return "";
+		return " " + place1(b + 1);
+	};
+	const create1 = function(c) { 
+	d = c
+	b= (c-1)/2
+	if(c <= 0)
+		return;
+	console.log(place2(b)+active1(d, y));
+	create1(c - 2);
+	};
+	const q =[create(x), create1(c)]
+	return q;
+};
+tool(7, "*");
+		
+</script>
+
+/*2
+<script>
+const tool=function(q, z)
+{
+	if(q%2==0)
+		q= q+1;
+	for(let i=1;i<=n;i+=2)
+	{
+		let a="";
+		let b="";
+		for(let j=1;j<=i;j++)
+			a+=z;
+		for(let k=(n-i)/2;k>=1;k--)
+		{
+			b+=" "
+		}
+		console.log(b+a);
+	}
+	for(let x=1;x<=n-2;x+=2)
+	{
+		let y="";
+		let z="";
+		for(let h=1;h<=n-x-1;h++)
+			y+=sgn;
+		for(let g=1;g<=x;g+=2)
+			z+=" ";
+		console.log(z+y);
+	}
+};
+tool(4, "@");
+</script>
+*/
+
+/*3
+<script>
+const place=[
+['x', '0', '0'],
+['0', '0', '0'],
+['0', '', '']
+];
+const any = function(number) {
+	return Math.floor(Math.random() * number) + 1;
+};
+
+const tool=['',''];
+const second=function(place, z)
+{
+	let a;
+	let b;
+	let c=0;
+		
+	for(j=0;j<=2;j++)
+		for(k=0;k<=2;k++)
+			if(board[j][k]!=='')
+			c++;
+	if(c===9)
+		return 'error';
+	let d=0;
+	let e=0;
+	for(j=0;j<=2;j++)
+		for(k=0;k<=2;k++)
+		{
+		if(place[j][k]==='x')
+				d++;
+		else if(place[j][k]==='0')
+				e++;
+		}
+	if(e===d)
+		z=true;
+	else
+		z=false;	
+	for(let i=1;;i++)
+	{
+		a=rand(3)-1;
+		b=rand(3)-1;
+		if(place[a][b]==='')
+		{
+			arr[0]=a;
+			arr[1]=b;
+			return tool;
+		}
+	}			
+};
+</script>
+*/
+
+/*4
+<script>
+const space=[
+['x', '', ''],
+['0', '', ''],
+['x', '', '']
+];
+const work=function(space, location, isX)
+{
+	if(space[location[0]][location[1]]!=='')
+		return -1;
+	if(z)
+		space[location[0]][location[1]]='x';
+	else if(!isX)
+		space[location[0]][location[1]]='0';
+	return 0;
+};
+</script>
+*/ 
+
+/*5
+<script>
+const board=[
+['x', '0', 'x'],
+['0', 'x', '0'],
+['0', 'x', 'x']
+];
+const findWinner=function(board)
+{
+	let a=0;
+	let c=0;
+	let a1=0;
+	let c1=0;
+	const win={
+		winner: 'noone'
+	};
+	for(let i=0;i<=2;i++)
+		if(board[i][0]==='x' && board[i][1]==='x' && board[i][2]==='x')
+		{
+			win.winner='x';
+			win.winningLocations=[[i, 0], [i, 1], [i, 2]];
+		}
+	for(i=0;i<=2;i++)
+		if(board[i][i]==='x')
+			a++;
+	if(a===3)
+	{
+		win.winner='x';
+		win.winningLocations=[[0, 0], [1, 1], [2, 2]];
+	}
+	if(board[0][2]==='x' && board[1][1]==='x' && board[2][0]==='x')
+	{
+		win.winner='x';
+		win.winningLocations=[[2, 0], [1, 1], [0, 2]];
+	}
+	for(i=0;i<=2;i++)
+	{
+		let b=0;
+		for(let j=0;j<=2;j++)
+			if(board[j][i]==='x')
+				b++;
+		if(b===3)
+		{
+			win.winner='x';
+			win.winningLocations=[[0, i], [1, i], [2, i]];
+		}
+	}
+	for(i=0;i<=2;i++)
+		if(board[i][0]==='0' && board[i][1]==='0' && board[i][2]==='0')
+		{
+			win.winner='0';
+			win.winningLocations=[[i, 0], [i, 1], [i, 2]];
+		}
+	for(i=0;i<=2;i++)
+		if(board[i][i]==='0')
+			a1++;
+	if(a1===3)
+	{
+		win.winner='0';
+		win.winningLocations=[[0, 0], [1, 1], [2, 2]];
+	}
+	if(board[0][2]==='0' && board[1][1]==='0' && board[2][0]==='0')
+	{
+		win.winner='0';
+		win.winningLocations=[[2, 0], [1, 1], [0, 2]];
+	}
+	for(i=0;i<=2;i++)
+	{
+		let b=0;
+		for(let j=0;j<=2;j++)
+			if(board[j][i]==='0')
+				b++;
+		if(b===3)
+		{
+			win.winner='0';
+			win.winningLocations=[[0, i], [1, i], [2, i]];
+		}
+	}
+	for(u=0;u<=2;u++)
+		for(v=0;v<=2;v++)
+			if(board[u][v]==='')
+				return undefined;
+	return win;
+};
+console.log(findWinner(board));
+</script>
+*/
+
+/*6
+<sctipt>
+const place = [
+      	 ['1', '2', ''],
+      	 ['4', '', '6'],
+   	  	 ['7', '', '']
+	    ];
+
+Array.prototype.random = function () {
+  	return this[Math.floor((Math.random()*this.length))];
+};
+  	x = place;
+	
+  
+const rand = function(min, max){
+  	const number = Math.floor(Math.random() * (max - min + 1)) + min;
+};              
+
+const find = function(place){
+
+  const nothing = [];
+  	for(let i = 0; i <= 2; i++){
+       for(let j = 0; j <=2; j++){
+          if(board[i][j] === ''){
+          	free.push([i,j]);
+          }
+       }
+    }
+  return nothing;
+};
+const final = find(place);
+console.log(final);
+
+const do = function(){
+    const put = final.random();
+place[put[0]][put[1]]='x';
+};
+
+do();   
+console.log(place)
+</script>
+/*
